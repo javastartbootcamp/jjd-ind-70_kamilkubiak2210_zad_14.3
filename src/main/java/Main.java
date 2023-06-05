@@ -12,11 +12,11 @@ public class Main {
     void run(Scanner scanner) {
         CountryReader countryReader = new CountryReader();
         try {
-            HashMap<String, Country> countryHashMap = countryReader.readCountries("countries.csv");
+            Map<String, Country> countriesMap = countryReader.readCountries("countries.csv");
             System.out.println("Podaj kod kraju, o którym chcesz zobaczyć informacje:");
             String countryName = scanner.nextLine().toUpperCase();
-            if (countryHashMap.containsKey(countryName)) {
-                Country country = countryHashMap.get(countryName);
+            if (countriesMap.containsKey(countryName)) {
+                Country country = countriesMap.get(countryName);
                 System.out.println(country);
             } else {
                 System.out.println("Kod kraju " + countryName + " nie został znaleziony.");
@@ -24,7 +24,6 @@ public class Main {
         } catch (IOException e) {
             System.out.println("Brak pliku countries.csv.");
         }
-        scanner.close();
     }
 
 }
